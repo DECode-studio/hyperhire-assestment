@@ -1,0 +1,41 @@
+import { MenuModel, TalentModel } from '@/service/model';
+import type { NextApiRequest, NextApiResponse } from 'next';
+
+export default function handler(req: NextApiRequest, res: NextApiResponse<MenuModel[]>) {
+  const listData: MenuModel[] = [
+    {
+      id: '0',
+      name: '채용',
+      ref: '#',
+      subMenu: [
+        {
+          id: '0',
+          name: '채용',
+          ref: '#',
+        },
+        {
+          id: '1',
+          name: '해외 개발자 원격 채용',
+          ref: '#',
+        },
+        {
+          id: '2',
+          name: '외국인 원격 채용 (비개발 직군)',
+          ref: '#',
+        },
+        {
+          id: '3',
+          name: '한국어 가능 외국인 채용',
+          ref: '#',
+        },
+      ],
+    },
+    {
+      id: '1',
+      name: '해외 개발자 활용 서비스',
+      ref: '#',
+    },
+  ];
+
+  res.status(200).json(listData);
+}

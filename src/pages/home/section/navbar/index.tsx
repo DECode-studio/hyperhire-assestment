@@ -1,12 +1,18 @@
-import { useState, useEffect } from "react";
-import LogoApp from "./components/logo";
-import { MenuDesktop, MenuMobile } from "./components/menu";
-import ContactButton from "./components/button";
+import { useState, useEffect } from 'react';
+import { observer } from 'mobx-react-lite';
+import MainAppController from '@/service/controller/main-page-controller';
 
-const Navbar = () => {
+import LogoApp from './components/logo';
+import { MenuDesktop, MenuMobile } from './components/menu';
+import ContactButton from './components/button';
+
+type Props = {
+  controller: MainAppController;
+};
+
+const Navbar = observer(({ controller }: Props) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Handle scroll event
   const handleScroll = () => {
     if (window.scrollY > 50) {
       setIsScrolled(true);
@@ -16,33 +22,30 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    // Listen to the scroll event
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full py-4 px-6 transition-all duration-300 z-50 ${isScrolled
-          ? "bg-white bg-opacity-60 shadow-lg backdrop-blur-sm text-gray-800" // Saat di-scroll
-          : "bg-transparent text-white" // Saat belum di-scroll
-        }`}
-    >
+      className={`fixed top-0 left-0 w-full py-4 px-6 transition-all duration-300 z-50 ${
+        isScrolled
+          ? 'bg-white bg-opacity-60 shadow-lg backdrop-blur-sm text-gray-800' // Saat di-scroll
+          : 'bg-transparent text-white' // Saat belum di-scroll
+      }`}>
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-
         <LogoApp isScrolled={isScrolled} />
 
-        <MenuDesktop />
+        <MenuDesktop controller={controller} />
 
-        <MenuMobile />
+        <MenuMobile controller={controller} />
 
         <ContactButton className="hidden lg:block" />
-
       </div>
     </nav>
   );
-};
+});
 
 export default Navbar;
