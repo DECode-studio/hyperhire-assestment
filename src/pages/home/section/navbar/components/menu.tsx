@@ -2,7 +2,7 @@ import { useState } from "react";
 import { listMenu } from "../data/list-menu"; // Sesuaikan dengan lokasi file data
 import { ArrowDown01Icon, ArrowUp01Icon, Cancel01Icon, Menu11Icon } from "hugeicons-react";
 
-export const MenuDesktop = ({ isScrolled }: { isScrolled: boolean }) => {
+export const MenuDesktop = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   const toggleDropdown = (id: string) => {

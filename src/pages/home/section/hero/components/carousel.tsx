@@ -12,7 +12,7 @@ const CarouselData = () => {
     const slides = listTalent().map((data, index) => ({
         key: index,
         content: (
-            <SlideItem data={data} />
+            <SlideItem key={index} data={data} />
         ),
         onClick: () => setCurrentIndex(index),
     }));

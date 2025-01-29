@@ -7,7 +7,7 @@ export type TalentModel = {
 }
 
 export const listTalent = (): TalentModel[] => {
-    var listData: TalentModel[] = []
+    const listData: TalentModel[] = []
 
     for (let index = 0; index < 10; index++) {
         const data: TalentModel = {

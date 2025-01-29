@@ -18,13 +18,13 @@ const HeroSection = () => {
 
             <div className='flex flex-col w-screen px-10 lg:px-48'>
 
-                <div className="flex flex-col lg:flex-row">
+                <div className="flex flex-col xl:flex-row">
 
                     <div className="flex-1">
                         <LeftSide />
                     </div>
 
-                    <div className="flex-1 px-10">
+                    <div className="flex-1 px-10 mt-0 md:mt-10 xl:mt-0">
                         <CarouselData />
                     </div>
 

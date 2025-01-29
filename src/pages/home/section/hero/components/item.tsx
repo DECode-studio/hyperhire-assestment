@@ -48,7 +48,7 @@ const SlideItem = ({ data }: ComponentsProps) => {
             <div className="flex flex-row flex-wrap mt-5 justify-center items-center">
                 {
                     data.skills.map((e) => (
-                        <div className="py-1 px-5 m-1 bg-white border border-gray-500 rounded-lg">
+                        <div key={e} className="py-1 px-5 m-1 bg-white border border-gray-500 rounded-lg">
                             <span className="text text-gray-500 text-xs font-bold">
                                 {e}
                             </span>
