@@ -1,5 +1,5 @@
 import { Tick01Icon } from "hugeicons-react";
-import { CareerModel, listCareer } from "../data/list-career";
+import { CareerModel, listCareer } from "../../../../../data/list-career";
 
 const CareerData = () => {
     return (

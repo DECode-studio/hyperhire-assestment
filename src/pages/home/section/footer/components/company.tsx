@@ -78,3 +78,5 @@ export const CompanyData = () => {
         </div>
     )
 }
+
+export default CompanyDetail

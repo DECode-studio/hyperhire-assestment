@@ -1,7 +1,10 @@
 import React from 'react';
-import CarouselData from './components/carousel';
+import dynamic from 'next/dynamic';
+
 import LeftSide from './components/left';
 import CareerData from './components/career';
+
+const CarouselData = dynamic(() => import('./components/carousel'), {ssr: false})
 
 const HeroSection = () => {
     return (

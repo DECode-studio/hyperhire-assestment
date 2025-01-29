@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { listMenu } from "../data/list-menu"; // Sesuaikan dengan lokasi file data
+import { listMenu } from "../../../../../data/list-menu"; // Sesuaikan dengan lokasi file data
 import { ArrowDown01Icon, ArrowUp01Icon, Cancel01Icon, Menu11Icon } from "hugeicons-react";
 
 export const MenuDesktop = () => {
@@ -127,3 +127,5 @@ export const MenuMobile = () => {
     </div>
   );
 };
+
+export default MenuDesktop
