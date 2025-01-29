@@ -1,6 +1,7 @@
 import { Tick01Icon } from 'hugeicons-react';
 import { listCareer } from '../../../../../service/data/list-career';
 import { CareerModel } from '@/service/model';
+import { useEffect, useRef } from 'react';
 
 const CareerData = () => {
   return (
@@ -9,7 +10,7 @@ const CareerData = () => {
       style={{
         scrollSnapType: 'x mandatory',
       }}>
-      <div className="hidden lg:block">
+      <div className="hidden lg:block opacity-0 animate-fade-in duration-[500ms]">
         <CareerList />
       </div>
 
@@ -37,15 +38,42 @@ const CareerWrap = () => {
 };
 
 const CareerList = () => {
+  const careerListRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const scrollElement = careerListRef.current;
+    if (!scrollElement) return;
+
+    const scrollWidth = scrollElement.scrollWidth;
+    const containerWidth = scrollElement.clientWidth;
+
+    const interval = setInterval(() => {
+      if (scrollElement.scrollLeft + containerWidth >= scrollWidth) {
+        scrollElement.scrollLeft = 0;
+      } else {
+        scrollElement.scrollBy({
+          left: 300,
+          behavior: 'smooth',
+        });
+      }
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div
-      className="flex overflow-x-auto space-x-4 py-4"
-      style={{
-        scrollSnapType: 'x mandatory',
-      }}>
-      {listCareer.map((e, index) => (
-        <CareerCard_1 key={index} data={e} />
-      ))}
+    <div ref={careerListRef} className="career-list-container">
+      <div className="career-list-content">
+        {listCareer.map((e) => (
+          <CareerCard_1 key={e.id} data={e} />
+        ))}
+      </div>
+
+      <div className="career-list-content">
+        {listCareer.map((e) => (
+          <CareerCard_1 key={e.id + '_dup'} data={e} />
+        ))}
+      </div>
     </div>
   );
 };

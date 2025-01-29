@@ -35,7 +35,7 @@ const CarouselData = observer(({ controller }: Props) => {
   };
 
   return (
-    <div className="w-full h-96 relative px-20 mt-10 md:mt-0">
+    <div className="w-full h-96 relative px-20">
       <Carousel
         slides={slides}
         goToSlide={currentIndex}

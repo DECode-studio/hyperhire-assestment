@@ -1,6 +1,6 @@
 const ServiceData = () => {
   return (
-    <div className="hidden md:block">
+    <div className="hidden md:block opacity-0 animate-fade-in duration-[500ms]">
       <div className="flex flex-row flex-wrap mt-14">
         <div className="flex flex-col text-start justify-start w-36">
           <div className="border-b border-white mb-2"></div>
